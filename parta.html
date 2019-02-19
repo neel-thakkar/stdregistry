@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		
+		
+		<title>Lab 02 - Part A</title>
+	</head>
+	<body>
+		<div class="container">
+		<h1><strong>Student Registry</strong></h1>
+		<p><br></p>
+		<form class="form-horizontal" id="regForm">
+			<div class="form-group" id ="usrFB">
+				<label for="usr" class="col-sm-2 control-label">Student Name: </label>
+				<div><div class="col-sm-5"><input type="text" class="form-control" id="usr"><span id="sicon"></span></div><span id="namealert" class="help-block"></span></div>
+			</div>
+			<div class="form-group" id ="idFB">
+				<label for="sid" class="col-sm-2 control-label">Student ID: </label>
+				<div><div class="col-sm-5"><input type="text" class="form-control" id="sid"><span id="idicon"></span></div><span id="idalert" class="help-block"></span></div>
+			</div>
+			<div class="form-group" id="progFB">
+				<label for="prog" class="col-sm-2 control-label">Program: </label>
+				<div><div class="col-sm-5"><input type="text" class="form-control" id="prog"><span id="progicon"></span></div><span id="progalert" class="help-block"></span></div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-5">
+				<button onclick="addRow();" type="button" class="btn btn-primary">Submit</button></div>
+			</div>
+		</form>
+		<div id="sidalert"></div>
+		<p><br></p>
+		<table id="mtable" class="table table-bordered">
+			<thead>
+			<tr>
+				<th>Student Name</th>
+				<th>Student ID</th>
+				<th>Program</th>
+			</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		</div>
+		<script>
+		
+			function addRow()
+			{
+			
+				//$('#mtable').append('<tr><td>my data</td><td>more data</td><td>neel</td></tr>');
+				//$('#mtable').append('<tr><td>my data</td><td>more data</td></tr>');
+				var usr = document.getElementById('usr').value;
+				var sid = document.getElementById('sid').value;
+				var prog = document.getElementById('prog').value;
+				var hp = /[Hh][Aa][Rr][Rr][Yy] [Pp][Oo][Tt][Tt][Ee][Rr]/;
+				var hg = /[Hh][Ee][Rr][Mm][Ii][Oo][Nn][Ee] [Gg][Rr][Aa][Nn][Gg][Ee][Rr]/;
+				var zero = /[0]{9}/;
+				var one = /[1]{9}/;
+				var two = /[2]{9}/;
+				var three = /[3]{9}/;
+				var four = /[4]{9}/;
+				var five = /[5]{9}/;
+				var six = /[6]{9}/;
+				var seven = /[7]{9}/;
+				var eight = /[8]{9}/;
+				var nine = /[9]{9}/;
+				var bw = /[Bb][Aa][Ss][Kk][Ee][Tt] [Ww][Ee][Aa][Vv][Ii][Nn][Gg]/;
+				var bc = /[Bb][Ee][Aa][Nn][Ss][Tt][Aa][Ll][Kk] [ Cc][Ll][Ii][Mm][Bb][Ii][Nn][Gg]/;
+				var usrError = /[0-9]/;
+				var sidError = /[^0-9]/;
+				var gError = /[Gg][Ee][Oo][Ll][Oo][Gg][Yy]/;
+				var mError = /[Mm][Ii][Cc][Rr][Oo][Bb][Ii][Oo][Ll][Oo][Gg][Yy]/;
+				if(usrError.test(usr) || sidError.test(sid) || gError.test(prog) || mError.test(prog) || usr == "" || sid == "" || prog == "")
+				{
+					
+				}
+				else if(hp.test(usr) || hg.test(usr) || zero.test(sid) || one.test(sid) || two.test(sid) || three.test(sid) || four.test(sid) || five.test(sid) || six.test(sid) || seven.test(sid) || eight.test(sid) || nine.test(sid) || bw.test(prog) || bc.test(prog))
+				{
+					
+					table = document.getElementsByTagName('table')[0];
+					nRow = table.insertRow(1);
+					c1 = nRow.insertCell(0);
+					c2 = nRow.insertCell(1);
+					c3 = nRow.insertCell(2);
+					nRow.className += "warning";
+					c1.innerHTML = usr;
+					c2.innerHTML = sid;
+					c3.innerHTML = prog;
+					
+					$("#usrFB").removeClass();
+					$("#usrFB").addClass("form-group");
+					$("#sicon").removeClass();
+					$("#namealert").html("");
+					$("#idFB").removeClass();
+					$("#idFB").addClass("form-group");
+					$("#idicon").removeClass();
+					$("#idalert").html("");
+					$("#progFB").removeClass();
+					$("#progFB").addClass("form-group");
+					$("#progicon").removeClass();
+					$("#progalert").html("");
+					//nRow.className -= "warning";
+					document.getElementById('usr').value = '';
+					document.getElementById('sid').value = '';
+					document.getElementById('prog').value = '';
+				}
+				else
+				{
+					var table = document.getElementsByTagName('table')[0];
+					var nRow = table.insertRow(1);
+					var c1 = nRow.insertCell(0);
+					var c2 = nRow.insertCell(1);
+					var c3 = nRow.insertCell(2);
+				
+					c1.innerHTML = usr;
+					c2.innerHTML = sid;
+					c3.innerHTML = prog;
+					
+					$("#usrFB").removeClass();
+					$("#usrFB").addClass("form-group");
+					$("#sicon").removeClass();
+					$("#namealert").html("");
+					$("#idFB").removeClass();
+					$("#idFB").addClass("form-group");
+					$("#idicon").removeClass();
+					$("#idalert").html("");
+					$("#progFB").removeClass();
+					$("#progFB").addClass("form-group");
+					$("#progicon").removeClass();
+					$("#progalert").html("");
+					document.getElementById('usr').value = '';
+					document.getElementById('sid').value = '';
+					document.getElementById('prog').value = '';
+				}
+				
+				
+			}
+			
+			
+			$(document).ready(function()
+			{
+				$("#usr").keyup(function()
+				{
+					$.post(
+						"parta.php",
+						{act : "valName", usr : $("#usr").val()},
+						function(data)
+						{
+							if(data.valName == 0)
+							{
+								//alert("we are in");
+								$("#namealert").html("");
+								$("#usrFB").removeClass();
+								//$("#namealert").removeClass();
+								$("#usrFB").addClass("form-group");
+								$("#sicon").removeClass();
+							}
+							else if(data.valName == 1)
+							{
+								$("#namealert").html("Student name cannot contain digits.").attr("role","alert");
+								$("#usrFB").removeClass().addClass("form-group has-error has-feedback");
+								$("#sicon").removeClass().addClass("glyphicon glyphicon-remove form-control-feedback");
+								
+							}
+							else if(data.valName == 2)
+							{
+								$("#namealert").html("Student name may be fictitious.").attr("role","alert");
+								$("#usrFB").removeClass().addClass("form-group has-warning has-feedback");
+								$("#sicon").removeClass().addClass("glyphicon glyphicon-warning-sign form-control-feedback");
+							}
+							
+							else
+							{
+								$("#namealert").html("").attr("role","alert");
+								$("#usrFB").removeClass().addClass("form-group has-success has-feedback");
+								$("#sicon").removeClass().addClass("glyphicon glyphicon-ok form-control-feedback");
+							}
+							
+						},
+						"json"
+						
+					)
+					
+				});
+				
+				$("#sid").keyup(function()
+				{
+					$.post(
+						"parta.php",
+						{act: "valID", sid : $("#sid").val()},
+						function(data)
+						{
+							if(data.valID == 0)
+							{
+								//alert("we are in");
+								$("#idalert").html("");
+								$("#idFB").removeClass();
+								$("#idFB").addClass("form-group");
+								$("#idicon").removeClass();
+							}
+							else if(data.valID == 1)
+							{
+								$("#idalert").html("Student ID must only contain digits.").attr("role","alert");
+								$("#idFB").removeClass().addClass("form-group has-error has-feedback");
+								$("#idicon").removeClass().addClass("glyphicon glyphicon-remove form-control-feedback");
+							}
+							else if(data.valID == 2)
+							{
+								$("#idalert").html("Student ID is suspicious.").attr("role","alert");
+								$("#idFB").removeClass().addClass("form-group has-warning has-feedback");
+								$("#idicon").removeClass().addClass("glyphicon glyphicon-warning-sign form-control-feedback");
+							}
+							else
+							{
+								$("#idalert").html("").attr("role","alert");
+								$("#idFB").removeClass().addClass("form-group has-success has-feedback");
+								$("#idicon").removeClass().addClass("glyphicon glyphicon-ok form-control-feedback");
+							}
+						},
+						"json"
+						
+					)
+				});
+				
+				$("#prog").keyup(function()
+				{
+					$.post(
+						"parta.php",
+						{act: "valProg", prog : $("#prog").val()},
+						function(data)
+						{
+							if(data.valProg == 0)
+							{
+								//alert("we are in");
+								$("#progalert").html("");
+								$("#progFB").removeClass();
+								$("#progFB").addClass("form-group");
+								$("#progicon").removeClass();
+							}
+							else if(data.valProg == 1)
+							{
+								$("#progalert").html("Program does not exist.").attr("role","alert");
+								$("#progFB").removeClass().addClass("form-group has-error has-feedback");
+								$("#progicon").removeClass().addClass("glyphicon glyphicon-remove form-control-feedback");
+							}
+							else if(data.valProg == 2)
+							{
+								$("#progalert").html("Program may be fictitous.").attr("role","alert");
+								$("#progFB").removeClass().addClass("form-group has-warning has-feedback");
+								$("#progicon").removeClass().addClass("glyphicon glyphicon-warning-sign form-control-feedback");
+							}
+							else
+							{
+								$("#progalert").html("").attr("role","alert");
+								$("#progFB").removeClass().addClass("form-group has-success has-feedback");
+								$("#progicon").removeClass().addClass("glyphicon glyphicon-ok form-control-feedback");
+							}
+						},
+						"json"
+						
+					)
+				});
+			});
+			
+
+		</script>
+	</body>
+</html>
